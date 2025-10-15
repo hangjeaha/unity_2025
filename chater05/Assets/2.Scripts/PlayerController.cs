@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+   
+
     // Update is called once per frame
     void Update()
     {
@@ -22,5 +25,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(moveStep, 0, 0);
         }
+    }
+    public void LButtonDown()
+    {
+        transform.Translate(-moveStep, 0, 0);
+    }
+    public void RButtonDown()
+    {
+        transform.Translate(moveStep, 0, 0);
     }
 }

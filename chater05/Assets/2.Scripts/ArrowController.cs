@@ -14,7 +14,7 @@ public class ArrowController : MonoBehaviour
     void Start()
     {
         playerTransform = 
-            GameObject.Find("Player").GetComponent<Transform>();
+            GameObject.Find("player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -37,6 +37,9 @@ public class ArrowController : MonoBehaviour
 
         if(distance < arrowRadius + playerRadius)
         {
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHP();
+
             Destroy(gameObject);
         }
     }
