@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     public GameObject hPGauge;
-    
+    void Start()
+    {
+        this.hPGauge = GameObject.Find("hpGauge");
+    }
+
     public void DecreaseHP()
     {
-               hPGauge.GetComponent<Image>().fillAmount -= 0.1f;
+         hPGauge.GetComponent<Image>().fillAmount -= 0.1f;
     }
 }
