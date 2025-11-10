@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    public int forwardForce = 2000;
+    public int upForce = 300;
+
+    // Start is called before the first frame update
+    public void Shoot(Vector3 dir)
+    {
+        GetComponent<Rigidbody>().AddForce(dir);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<ParticleSystem>().Play();
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        Destroy(gameObject, 1);
+    }
+
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+        //Shoot(new Vector3(0, upForce, forwardForce));
+    }
+}
