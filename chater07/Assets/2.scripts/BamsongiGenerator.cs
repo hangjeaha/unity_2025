@@ -5,16 +5,24 @@ using UnityEngine;
 public class BamsongiGenerator : MonoBehaviour
 {
     public GameObject bamsongiPrefab;
+    public float trowForce = 5f;
+    float startValue;
+    float power;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
+            startValue = Input.mousePosition.y;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            power = Input.mousePosition.y - startValue;
+
             GameObject go = Instantiate(bamsongiPrefab);
-             go.transform.position = new Vector3(transform.position.x, transform.position.y+1, transform.position.z+1);
-        
-            go.GetComponent<bamsongiPrefab>().Shoot(new Vector3(0, 800, 2000));
+            go.transform.position = new Vector3(transform.position.x, transform.position.y+1, transform.position.z+1);
+            
+            go.GetComponent<BamsongiController>().Shoot((transform.forward + transform.up * 0.15f) * trowForce * power);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class BamsongiController : MonoBehaviour
 {
     public int forwardForce = 2000;
     public int upForce = 300;
